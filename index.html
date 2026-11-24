@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Daniel Cabezos Roig · Montaje, animación 3D y VFX</title>
+<meta name="description" content="Portfolio de Daniel Cabezos Roig: montaje, animación 3D y efectos visuales. Graduado en Comunicación Audiovisual (UJI), Valencia.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Daniel Cabezos Roig · Montaje, animación 3D y VFX">
+<meta property="og:description" content="Cortometrajes, videoclips, animación 3D y renders.">
+<!-- Cuando la web esté publicada, cambia esta ruta por la dirección completa, p. ej. https://TUUSUARIO.github.io/assets/img/og.jpg -->
+<meta property="og:image" content="assets/img/og.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23000'/%3E%3Crect x='6' y='20' width='52' height='24' fill='%23e7e6e2'/%3E%3C/svg%3E">
+<link rel="preload" href="assets/fonts/anybody-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
+<script>document.documentElement.classList.add('js');try{var l=localStorage.getItem('lang');if(l==='en'||l==='es'){document.documentElement.dataset.lang=l;document.documentElement.lang=l}}catch(e){}</script>
+<style>
+/*
+  VOICE   Quiet and exact, like a festival programme: the work talks, the page frames it.
+  IDEA    A silver-gelatin contact sheet. Everything is monochrome until you look at it,
+          as the pinwheel in El molí de vent turns from black and white to colour.
+  PICTURE A 2.39:1 letterboxed loop of that pinwheel, under the name de-squeezed like an anamorphic lens.
+  COLOUR  Silver paper #E7E6E2, black #000, graphite #55544F, halide grey #C3C1BB; festival gold #7A5F12 only for the award.
+  TYPE    Anybody (variable width 50–150) for the name and titles, echoing the extended type of the CV; Newsreader for text.
+  LAYOUT  Left-aligned on a 1240px measure; one lead project, then pairs, a diptych, a masonry sheet, end credits.
+*/
+@font-face{font-family:'Anybody';font-style:normal;font-display:swap;font-weight:100 900;font-stretch:50% 150%;src:url(assets/fonts/anybody-latin-wdth-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Anybody';font-style:normal;font-display:swap;font-weight:100 900;font-stretch:50% 150%;src:url(assets/fonts/anybody-latin-ext-wdth-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Newsreader';font-style:normal;font-display:swap;font-weight:200 800;src:url(assets/fonts/newsreader-latin-opsz-normal.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Newsreader';font-style:normal;font-display:swap;font-weight:200 800;src:url(assets/fonts/newsreader-latin-ext-opsz-normal.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Newsreader';font-style:italic;font-display:swap;font-weight:200 800;src:url(assets/fonts/newsreader-latin-opsz-italic.woff2) format('woff2')}
+
+:root{
+  color-scheme:light;
+  --paper:#E7E6E2; --ink:#000; --graphite:#55544F; --halide:#C3C1BB; --gold:#7A5F12; --veil:rgba(231,230,226,.9);
+  --display:'Anybody','Arial Black',system-ui,sans-serif;
+  --text:'Newsreader',Georgia,'Times New Roman',serif;
+  --measure:1240px; --gut:max(5vw,16px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){color-scheme:dark;--paper:#151514;--ink:#ECEBE7;--graphite:#A3A19B;--halide:#3A3936;--gold:#D2B460;--veil:rgba(21,21,20,.9)}}
+:root[data-theme=dark]{color-scheme:dark;--paper:#151514;--ink:#ECEBE7;--graphite:#A3A19B;--halide:#3A3936;--gold:#D2B460;--veil:rgba(21,21,20,.9)}
+
+*{box-sizing:border-box;min-width:0}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 18px/1.6 var(--text);font-optical-sizing:auto;overflow-x:clip;-webkit-font-smoothing:antialiased}
+img,video{display:block;max-width:100%}
+a{color:inherit;text-underline-offset:.18em;text-decoration-thickness:1px}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+html[data-lang=es] [lang=en]:not(html),html[data-lang=en] [lang=es]:not(html){display:none!important}
+.wrap{width:min(var(--measure),100% - 2*var(--gut));margin-inline:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
+
+/* type */
+h2,h3,.disp{font-family:var(--display);font-weight:780;font-stretch:135%;line-height:1.04;letter-spacing:-.01em;margin:0;text-wrap:balance}
+h2{font-size:clamp(34px,5vw,52px)}
+h3{font-size:clamp(22px,2.2vw,26px);font-stretch:120%;font-weight:720}
+p{margin:0 0 .8em;max-width:64ch}
+.meta{font-size:15px;color:var(--graphite);line-height:1.45;margin:0}
+.section{padding-block:clamp(64px,9vw,128px) 0}
+.section-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;align-items:end;margin-bottom:clamp(28px,4vw,48px)}
+.section-head p{margin:0;color:var(--graphite);justify-self:end;max-width:42ch}
+@media (max-width:760px){.section-head{grid-template-columns:1fr}.section-head p{justify-self:start}}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:.55em;min-height:44px;padding:0 18px;border:1.5px solid var(--ink);background:transparent;font-family:var(--display);font-stretch:115%;font-weight:650;font-size:15px;text-decoration:none;cursor:pointer;transition:background .2s,color .2s}
+.btn:hover{background:var(--ink);color:var(--paper)}
+.btn.solid{background:var(--ink);color:var(--paper)}
+.btn.solid:hover{background:transparent;color:var(--ink)}
+.btn svg{width:11px;height:12px;flex:none;fill:currentColor}
+
+/* header */
+.top{position:sticky;top:0;z-index:20;background:var(--veil);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--halide)}
+.top .wrap{display:flex;align-items:center;gap:20px;min-height:56px}
+.brand{font-family:var(--display);font-stretch:140%;font-weight:800;font-size:15px;text-decoration:none;white-space:nowrap;margin-right:auto}
+.nav{display:flex;flex-wrap:wrap;gap:2px 18px;font-family:var(--display);font-stretch:110%;font-weight:600;font-size:15px}
+.nav a{text-decoration:none;padding:12px 0}
+.nav a:hover{text-decoration:underline}
+.lang{border:0;background:none;padding:12px 0 12px 14px;border-left:1px solid var(--halide);font-family:var(--display);font-stretch:110%;font-weight:600;font-size:15px;cursor:pointer;text-decoration:underline;text-decoration-color:var(--halide)}
+.lang .short{display:none}
+@media (max-width:640px){.brand{display:none}.top .wrap{justify-content:space-between;gap:10px}.nav{flex-wrap:nowrap;gap:0 13px;font-size:14px;font-stretch:105%}.lang{font-size:14px;padding-left:10px}.lang .long{display:none}.lang .short{display:inline}}
+
+/* hero */
+.hero{padding-top:clamp(20px,3vw,36px)}
+.name{margin:0;font-family:var(--display);text-transform:uppercase;line-height:.84;letter-spacing:-.015em;font-size:clamp(44px,8.3vw,150px)}
+.name>span{display:block;width:max-content;font-stretch:150%}
+.name .l2>span{display:inline}
+@media (max-width:600px){.name .l2>span{display:block}}
+.name .l1{font-weight:280}
+.name .l2{font-weight:880}
+.js .name span{font-stretch:50%}
+.js .name.open span{font-stretch:150%;transition:font-stretch 1.7s cubic-bezier(.16,.8,.12,1)}
+.js .name.m span{font-stretch:150%!important;transition:none!important}
+@media (prefers-reduced-motion:reduce){.js .name span{font-stretch:150%}}
+.reel{position:relative;margin-top:clamp(14px,2vw,24px);aspect-ratio:2.39/1;max-height:56svh;width:100%;background:#000;overflow:hidden}
+.reel video{width:100%;height:100%;object-fit:cover}
+.hero-foot{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px 48px;padding-top:20px}
+.lede{font-size:clamp(20px,2vw,24px);line-height:1.4;margin:0 0 18px;max-width:34ch}
+.ctas{display:flex;flex-wrap:wrap;gap:10px}
+.caption{display:flex;gap:14px;align-items:flex-start;justify-content:flex-end}
+.caption p{margin:0;font-size:15px;color:var(--graphite);max-width:36ch}
+.caption button{flex:none;min-height:36px;padding:0 12px;border:1px solid var(--halide);background:none;font-family:var(--display);font-stretch:110%;font-weight:600;font-size:13px;cursor:pointer}
+@media (max-width:760px){.reel{aspect-ratio:16/10}.hero-foot{grid-template-columns:1fr}.caption{justify-content:flex-start}}
+
+/* frames: monochrome until looked at */
+.frame{position:relative;display:block;width:100%;aspect-ratio:16/9;padding:0;border:0;background:var(--halide);cursor:pointer;overflow:hidden;text-align:left}
+.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.06);transition:filter .7s ease,transform .7s ease}
+.frame:hover img,.frame:focus-visible img,.lit img{filter:none}
+.frame:hover img{transform:scale(1.015)}
+.frame .ph{position:absolute;inset:0;display:grid;place-content:center;gap:6px;padding:16px;background:#000;color:#E7E6E2;font-family:var(--display);font-stretch:130%;font-weight:800;font-size:clamp(18px,2.4vw,30px);line-height:1.05;text-align:center}
+.frame .ph small{font-family:var(--text);font-stretch:100%;font-weight:400;font-size:14px;color:#A3A19B}
+.play{position:absolute;left:0;bottom:0;z-index:2;display:flex;align-items:center;gap:8px;padding:9px 12px;background:var(--ink);color:var(--paper);font-family:var(--display);font-stretch:110%;font-weight:650;font-size:13px}
+.play svg{width:9px;height:10px;fill:currentColor}
+
+/* lead project */
+.lead{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:28px 40px;align-items:start}
+.lead+.lead{margin-top:clamp(64px,8vw,112px)}
+.lead.flip{grid-template-columns:minmax(0,4fr) minmax(0,8fr)}
+.lead.flip>.frame{order:2}
+.kind{font-size:15px;color:var(--graphite);margin:0 0 6px}
+.lead h3{font-size:clamp(30px,3.4vw,44px);font-stretch:140%;font-weight:800;margin-bottom:14px}
+.award{display:inline-block;margin:0 0 16px;padding:5px 10px;border:1.5px solid var(--gold);color:var(--gold);font-family:var(--display);font-stretch:110%;font-weight:700;font-size:14px;line-height:1.3}
+.roles{font-family:var(--display);font-stretch:105%;font-weight:600;font-size:16px;line-height:1.4;margin:0 0 10px}
+.breakdown{margin-top:22px;padding-top:16px;border-top:1px solid var(--halide)}
+.breakdown p{font-size:15px;color:var(--graphite);margin-bottom:10px}
+.bd{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.bd figure{margin:0}
+.bd .frame{cursor:zoom-in}
+.bd figcaption{font-size:13px;color:var(--graphite);padding-top:5px}
+@media (max-width:860px){.lead,.lead.flip{grid-template-columns:1fr}.lead.flip>.frame{order:0}}
+
+/* pair + diptych */
+.pair{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px 32px;margin-top:clamp(56px,7vw,96px);align-items:start}
+.work h3{margin-top:16px}
+.work .meta{margin-top:6px}
+.diptych{margin-top:clamp(56px,7vw,96px)}
+.dip{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.dip .play{font-size:14px}
+.dip-text{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:8px 40px;margin-top:16px}
+@media (max-width:760px){.pair,.dip-text{grid-template-columns:1fr}.dip{grid-template-columns:1fr}}
+
+/* other work */
+.others{margin-top:clamp(56px,7vw,96px);border-top:1px solid var(--halide)}
+.others h3.group{font-size:18px;font-stretch:115%;font-weight:700;padding:18px 0 4px}
+.row{display:grid;grid-template-columns:220px minmax(0,1fr);gap:24px;align-items:center;padding:16px 0;border-bottom:1px solid var(--halide)}
+.row h4{margin:0 0 4px;font-family:var(--display);font-stretch:120%;font-weight:720;font-size:20px;line-height:1.15}
+.row .ph{font-size:15px;font-stretch:115%}
+@media (max-width:560px){.row{grid-template-columns:130px minmax(0,1fr);gap:14px}.row h4{font-size:17px}}
+
+/* 3D sheet */
+.sheet{columns:3 260px;column-gap:14px}
+.sheet figure{margin:0 0 14px;break-inside:avoid}
+.sheet .frame{aspect-ratio:auto;height:auto;cursor:zoom-in;background:#000}
+.sheet .frame img{position:static;height:auto}
+.sheet figcaption{display:flex;justify-content:space-between;gap:12px;padding-top:6px;font-size:15px}
+.sheet figcaption span{color:var(--graphite)}
+@media (max-width:600px){.sheet{columns:2;column-gap:8px}.sheet figure{margin-bottom:10px}.sheet figcaption{font-size:14px;display:block}}
+
+/* end credits */
+.credits{display:grid;gap:22px;padding-block:8px}
+.credit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:4px 28px;align-items:baseline}
+.credit .r{text-align:right;color:var(--graphite);font-size:16px;line-height:1.4}
+.credit .t{font-family:var(--display);font-stretch:125%;font-weight:720;font-size:clamp(18px,2vw,22px);line-height:1.2}
+.credit .t small{display:block;font-family:var(--text);font-stretch:100%;font-weight:400;font-size:15px;color:var(--graphite);margin-top:2px}
+@media (max-width:600px){.credit{grid-template-columns:1fr;text-align:center}.credit .r{text-align:center;order:2}}
+
+/* about */
+.about{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:32px 48px;align-items:start}
+.portrait{aspect-ratio:1;cursor:default;position:sticky;top:88px}
+.portrait img{object-position:50% 30%}
+.about .intro{font-size:clamp(19px,1.8vw,21px);line-height:1.55}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 40px;margin-top:clamp(28px,4vw,44px);padding-top:28px;border-top:1px solid var(--halide)}
+@media (max-width:560px){.facts{grid-template-columns:1fr}}
+.facts h3{font-size:18px;font-stretch:115%;margin-bottom:10px}
+.facts ul{list-style:none;margin:0;padding:0}
+.facts li{padding:3px 0;line-height:1.4}
+.facts li .meta{display:block}
+.facts .bul li{padding-left:14px;position:relative;font-size:16px}
+.facts .bul li::before{content:'';position:absolute;left:0;top:.75em;width:6px;height:1.5px;background:var(--ink)}
+@media (max-width:760px){.about{grid-template-columns:1fr}.portrait{max-width:300px;position:relative;top:0}}
+
+/* contact */
+.contact{padding-bottom:clamp(64px,9vw,120px)}
+.mail{display:inline-block;white-space:nowrap;margin:6px 0 22px;font-family:var(--display);font-stretch:130%;font-weight:800;font-size:clamp(26px,6.2vw,92px);line-height:1;letter-spacing:-.02em;text-decoration:none;overflow-wrap:anywhere;border-bottom:3px solid var(--ink);padding-bottom:6px}
+.mail:hover{border-bottom-color:transparent}
+.contact .ctas{align-items:center}
+.contact .status{font-size:15px;color:var(--graphite);margin:0 0 0 6px}
+footer{border-top:1px solid var(--halide);padding-block:20px 28px;font-size:15px;color:var(--graphite)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+
+/* viewer */
+dialog.viewer{width:100%;max-width:100%;height:100%;max-height:100%;margin:0;padding:0;border:0;background:#000;color:#ECEBE7}
+dialog.viewer::backdrop{background:#000}
+.v-in{display:grid;grid-template-rows:minmax(0,1fr) auto;height:100%}
+.v-stage{display:grid;place-items:center;padding:clamp(8px,3vw,40px) clamp(8px,3vw,40px) 0;min-height:0}
+.v-stage iframe,.v-stage video{width:min(100%,calc((100svh - 140px)*16/9));aspect-ratio:16/9;height:auto;border:0;background:#000}
+.v-stage img{max-width:100%;max-height:calc(100svh - 140px);width:auto;height:auto;object-fit:contain}
+.v-bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px;padding:14px clamp(12px,3vw,40px) 18px}
+.v-title{margin:0 auto 0 0;font-family:var(--display);font-stretch:125%;font-weight:720;font-size:18px}
+.v-bar .btn{border-color:#ECEBE7;color:#ECEBE7;font-size:14px}
+.v-bar .btn:hover{background:#ECEBE7;color:#000}
+.v-bar a.btn{text-decoration:none}
+.v-note{flex-basis:100%;margin:0;font-size:14px;color:#A3A19B}
+.v-fallback{display:grid;gap:18px;justify-items:center;text-align:center;max-width:760px}
+.v-fallback img{max-height:52svh;width:auto;max-width:100%}
+.v-fallback p{margin:0;color:#ECEBE7;font-size:17px}
+.v-fallback .btn{border-color:#ECEBE7;color:#ECEBE7;text-decoration:none}
+.v-fallback .btn:hover{background:#ECEBE7;color:#000}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio">Daniel Cabezos Roig</a>
+    <nav class="nav" aria-label="Secciones">
+      <a href="#trabajos"><span lang="es">Trabajos</span><span lang="en">Work</span></a>
+      <a href="#tresde">3D</a>
+      <a href="#sobre-mi"><span lang="es">Sobre mí</span><span lang="en">About</span></a>
+      <a href="#contacto"><span lang="es">Contacto</span><span lang="en">Contact</span></a>
+    </nav>
+    <button class="lang" id="lang" type="button"><span lang="es"><span class="long">English</span><span class="short">EN</span></span><span lang="en"><span class="long">Español</span><span class="short">ES</span></span></button>
+  </div>
+</header>
+
+<main id="inicio">
+
+<section class="hero wrap" aria-labelledby="nombre">
+  <h1 class="name" id="nombre" aria-label="Daniel Cabezos Roig"><span class="l1" aria-hidden="true">Daniel</span><span class="l2" aria-hidden="true"><span>Cabezos</span> <span>Roig</span></span></h1>
+  <div class="reel">
+    <video id="reel" src="assets/video/moli-loop.mp4" poster="assets/img/moli-loop-poster.webp" muted loop playsinline autoplay preload="auto" aria-hidden="true"></video>
+  </div>
+  <div class="hero-foot">
+    <div>
+      <p class="lede"><span lang="es">Montaje, animación 3D y efectos visuales. Graduado en Comunicación Audiovisual por la Universitat Jaume I, con base en Valencia.</span><span lang="en">Editing, 3D animation and visual effects. Audiovisual Communication graduate from Universitat Jaume I, based in Valencia, Spain.</span></p>
+      <div class="ctas">
+        <a class="btn solid" href="#trabajos"><span lang="es">Ver trabajos</span><span lang="en">See the work</span></a>
+        <a class="btn" href="#contacto"><span lang="es">Escribirme</span><span lang="en">Get in touch</span></a>
+        <a class="btn" href="assets/cv/CV-Daniel-Cabezos-Roig.pdf" download><svg viewBox="0 0 11 12" aria-hidden="true"><path d="M4.5 0h2v6.2l2.1-2.1 1.4 1.4L5.5 10 1 5.5l1.4-1.4 2.1 2.1zM0 10.5h11V12H0z"/></svg><span lang="es">Descargar CV (PDF)</span><span lang="en">Download CV (PDF, Spanish)</span></a>
+      </div>
+    </div>
+    <div class="caption">
+      <p><span lang="es">En pantalla: <em>El molí de vent</em>, cortometraje premiado en el Festival XS de Puçol 2026.</span><span lang="en">On screen: <em>El molí de vent</em>, a short film awarded at Festival XS de Puçol 2026.</span></p>
+      <button type="button" id="reelBtn" aria-pressed="false"><span class="on"><span lang="es">Pausar</span><span lang="en">Pause</span></span><span class="off" hidden><span lang="es">Reproducir</span><span lang="en">Play</span></span></button>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap" id="trabajos" aria-labelledby="h-trabajos">
+  <div class="section-head">
+    <h2 id="h-trabajos"><span lang="es">Trabajos</span><span lang="en">Work</span></h2>
+    <p><span lang="es">Cada imagen recupera el color cuando la miras. Haz clic para ver la pieza.</span><span lang="en">Each frame gets its colour back when you look at it. Click to watch.</span></p>
+  </div>
+
+  <!-- Proyecto principal 1: Al otro lado de la nube negra (TFG, YouTube) -->
+  <article class="lead">
+    <button class="frame" type="button" data-yt="hBf-2ZSKz1U" data-title="Al otro lado de la nube negra">
+      <span class="ph" aria-hidden="true">Al otro lado de la nube negra<small>YouTube</small></span>
+      <img data-thumb="hBf-2ZSKz1U" alt="" loading="lazy">
+      <span class="play"><svg viewBox="0 0 9 10" aria-hidden="true"><path d="M0 0l9 5-9 5z"/></svg><span lang="es">Ver mediometraje</span><span lang="en">Watch the film</span></span>
+      <span class="sr" lang="es">Ver Al otro lado de la nube negra</span><span class="sr" lang="en">Watch Al otro lado de la nube negra</span>
+    </button>
+    <div>
+      <p class="kind"><span lang="es">Mediometraje, trabajo de fin de grado (UJI)</span><span lang="en">Medium-length film, final degree project (UJI)</span></p>
+      <h3>Al otro lado de la nube negra</h3>
+      <p class="roles"><span lang="es">Script supervisor y montador principal</span><span lang="en">Script supervisor and lead editor</span></p>
+      <p><span lang="es">Responsable de la continuidad durante el rodaje y del montaje completo, con el que definí el ritmo narrativo de la película.</span><span lang="en">In charge of continuity during the shoot and of the full edit, where I set the film's narrative pace.</span></p>
+    </div>
+  </article>
+
+  <!-- Proyecto principal 2: El molí de vent (vídeo alojado en la propia web) -->
+  <article class="lead flip">
+    <button class="frame" type="button" data-src="assets/video/el-moli-de-vent.mp4" data-poster="assets/img/moli-molino-1920.webp" data-title="El molí de vent">
+      <img src="assets/img/moli-molino-1280.webp" srcset="assets/img/moli-molino-800.webp 800w, assets/img/moli-molino-1280.webp 1280w, assets/img/moli-molino-1920.webp 1920w" sizes="(max-width:860px) 100vw, 66vw" width="1280" height="720" alt="">
+      <span class="play"><svg viewBox="0 0 9 10" aria-hidden="true"><path d="M0 0l9 5-9 5z"/></svg><span lang="es">Ver cortometraje (1:54)</span><span lang="en">Watch the short (1:54)</span></span>
+      <span class="sr" lang="es">Ver El molí de vent</span><span class="sr" lang="en">Watch El molí de vent</span>
+    </button>
+    <div>
+      <p class="kind"><span lang="es">Cortometraje</span><span lang="en">Short film</span></p>
+      <h3>El molí de vent</h3>
+      <p class="award"><span lang="es">2º premio, Festival XS de Puçol 2026</span><span lang="en">2nd prize, Festival XS de Puçol 2026</span></p>
+      <p class="roles"><span lang="es">Dirección creativa, VFX y montaje principal</span><span lang="en">Creative direction, VFX and lead editor</span></p>
+      <p><span lang="es">Idea original de la historia, efectos visuales 3D y montaje completo de la pieza.</span><span lang="en">Original story idea, 3D visual effects and the full edit.</span></p>
+      <div class="breakdown">
+        <p><span lang="es">Del plano rodado al molino en 3D.</span><span lang="en">From the location shot to the 3D windmill.</span></p>
+        <div class="bd">
+          <figure>
+            <button class="frame" type="button" data-img="assets/img/moli-ruina-1280.webp" data-title="El molí de vent · plano rodado" aria-label="Ampliar plano rodado"><img src="assets/img/moli-ruina-1280.webp" width="1280" height="720" alt="Torre de un molino en ruinas, en blanco y negro" loading="lazy"></button>
+            <figcaption><span lang="es">Plano rodado</span><span lang="en">Location shot</span></figcaption>
+          </figure>
+          <figure>
+            <button class="frame" type="button" data-img="assets/img/moli-molino-1920.webp" data-title="El molí de vent · molino 3D" aria-label="Ampliar plano final"><img src="assets/img/moli-molino-800.webp" width="800" height="450" alt="Molino de viento reconstruido en 3D con las aspas girando" loading="lazy"></button>
+            <figcaption><span lang="es">Plano final</span><span lang="en">Final shot</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Pareja: Starman + El hombre chatarra (YouTube) -->
+  <div class="pair">
+    <article class="work">
+      <button class="frame" type="button" data-yt="_zhnBZEvmBM" data-title="Starman">
+        <span class="ph" aria-hidden="true">Starman<small>YouTube</small></span>
+        <img data-thumb="_zhnBZEvmBM" alt="" loading="lazy">
+        <span class="play"><svg viewBox="0 0 9 10" aria-hidden="true"><path d="M0 0l9 5-9 5z"/></svg><span lang="es">Ver videoclip</span><span lang="en">Watch</span></span>
+        <span class="sr">Starman</span>
+      </button>
+      <h3>Starman</h3>
+      <p class="meta"><span lang="es">Videoclip fan de David Bowie</span><span lang="en">Fan music video for David Bowie</span></p>
+      <p class="roles" style="margin-top:10px"><span lang="es">Dirección creativa y animación 3D</span><span lang="en">Creative direction and 3D animation</span></p>
+      <p><span lang="es">Historia ideada de principio a fin y animaciones 3D de toda la pieza.</span><span lang="en">I wrote the whole story and made all of the 3D animation.</span></p>
+    </article>
+    <article class="work">
+      <!-- PENDIENTE: añade formato, tu rol y una línea de descripción como en Starman -->
+      <button class="frame" type="button" data-yt="SJqC0dfN8sU" data-title="El hombre chatarra">
+        <span class="ph" aria-hidden="true">El hombre chatarra<small>YouTube</small></span>
+        <img data-thumb="SJqC0dfN8sU" alt="" loading="lazy">
+        <span class="play"><svg viewBox="0 0 9 10" aria-hidden="true"><path d="M0 0l9 5-9 5z"/></svg><span lang="es">Ver</span><span lang="en">Watch</span></span>
+        <span class="sr">El hombre chatarra</span>
+      </button>
+      <h3>El hombre chatarra</h3>
+    </article>
+  </div>
+
+  <!-- Díptico experimental -->
+  <article class="diptych">
+    <div class="dip">
+      <button class="frame" type="button" data-yt="ENYpHn8KiEw" data-title="This Was a Film About You">
+        <span class="ph" aria-hidden="true">About You<small>YouTube</small></span>
+        <img data-thumb="ENYpHn8KiEw" alt="" loading="lazy">
+        <span class="play"><svg viewBox="0 0 9 10" aria-hidden="true"><path d="M0 0l9 5-9 5z"/></svg>About You</span>
+      </button>
+      <button class="frame" type="button" data-yt="sVQtFCj2um0" data-title="This Was a Film About Absence">
+        <span class="ph" aria-hidden="true">About Absence<small>YouTube</small></span>
+        <img data-thumb="sVQtFCj2um0" alt="" loading="lazy">
+        <span class="play"><svg viewBox="0 0 9 10" aria-hidden="true"><path d="M0 0l9 5-9 5z"/></svg>About Absence</span>
+      </button>
+    </div>
+    <div class="dip-text">
+      <div>
+        <h3>This Was a Film About You / About Absence</h3>
+        <p class="meta" style="margin-top:6px"><span lang="es">Díptico de cortometrajes experimentales</span><span lang="en">Experimental short film diptych</span></p>
+      </div>
+      <div>
+        <p class="roles"><span lang="es">Cámara, desarrollo creativo, VFX y música</span><span lang="en">Camera, creative development, VFX and music</span></p>
+        <p><span lang="es">Dos piezas experimentales con trabajo de cámara, efectos visuales en postproducción y música compuesta para ellas.</span><span lang="en">Two experimental pieces: camera work, visual effects in post-production and music composed for them.</span></p>
+      </div>
+    </div>
+  </article>
+
+  <!-- Trabajos menores -->
+  <div class="others">
+    <h3 class="group"><span lang="es">Otros trabajos</span><span lang="en">Other work</span></h3>
+    <div class="row">
+      <!-- Vídeo en Google Drive: el archivo debe estar compartido como "Cualquier persona con el enlace" -->
+      <button class="frame" type="button" data-drive="1x8hXxIrm0fDF4JsS6eQNytOFRsy59OGT" data-title="Réquiem">
+        <span class="ph" aria-hidden="true">Réquiem<small>Google Drive</small></span>
+        <img data-drive-thumb="1x8hXxIrm0fDF4JsS6eQNytOFRsy59OGT" alt="" loading="lazy">
+        <span class="sr">Réquiem</span>
+      </button>
+      <div>
+        <h4>Réquiem</h4>
+        <p class="meta"><span lang="es">Cortometraje. Script supervisor.</span><span lang="en">Short film. Script supervisor.</span></p>
+      </div>
+    </div>
+    <div class="row">
+      <button class="frame" type="button" data-yt="KYBRcxeWopY" data-title="Candy Osmo · Ancient Dreams in a Modern Land">
+        <span class="ph" aria-hidden="true">Candy Osmo<small>YouTube</small></span>
+        <img data-thumb="KYBRcxeWopY" alt="" loading="lazy">
+        <span class="sr">Ancient Dreams in a Modern Land</span>
+      </button>
+      <div>
+        <h4>Ancient Dreams in a Modern Land</h4>
+        <p class="meta"><span lang="es">Videoclip corto protagonizado por Candy Osmo, animado por mí.</span><span lang="en">Short music video starring Candy Osmo, animated by me.</span></p>
+      </div>
+    </div>
+    <div class="row">
+      <button class="frame" type="button" data-yt="Uz2F5X-dRHg" data-title="Elden Ring · Close to Heaven">
+        <span class="ph" aria-hidden="true">Elden Ring<small>YouTube</small></span>
+        <img data-thumb="Uz2F5X-dRHg" alt="" loading="lazy">
+        <span class="sr">Close to Heaven</span>
+      </button>
+      <div>
+        <h4>Close to Heaven</h4>
+        <p class="meta"><span lang="es">AMV de Elden Ring montado sobre la canción de Breaking Benjamin.</span><span lang="en">Elden Ring AMV cut to the Breaking Benjamin song.</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap" id="tresde" aria-labelledby="h-3d">
+  <div class="section-head">
+    <h2 id="h-3d"><span lang="es">Animación y 3D</span><span lang="en">Animation and 3D</span></h2>
+    <p><span lang="es">Personajes y escenas de creación propia. Haz clic para verlos a tamaño completo.</span><span lang="en">Original characters and scenes. Click to see them full size.</span></p>
+  </div>
+  <div class="sheet" id="sheet">
+    <figure><button class="frame" type="button" data-img="assets/img/coma-1920.webp" data-title="Coma" data-group="3d"><img src="assets/img/coma-800.webp" width="566" height="800" alt="Póster: personaje de traje con tentáculos de luz magenta" loading="lazy"></button><figcaption>Coma <span lang="es">póster</span><span lang="en">poster</span></figcaption></figure>
+    <figure><button class="frame" type="button" data-img="assets/img/krepton-1920.webp" data-title="Krepton" data-group="3d"><img src="assets/img/krepton-800.webp" width="800" height="800" alt="Personaje de pelo en llamas rojo y amarillo, de brazos cruzados" loading="lazy"></button><figcaption>Krepton <span>render</span></figcaption></figure>
+    <figure><button class="frame" type="button" data-img="assets/img/candy-1920.webp" data-title="Candy" data-group="3d"><img src="assets/img/candy-800.webp" width="450" height="800" alt="Personaje de cabeza esférica con traje azul y antenas en zigzag" loading="lazy"></button><figcaption>Candy <span>render</span></figcaption></figure>
+    <figure><button class="frame" type="button" data-img="assets/img/mecacandy-1920.webp" data-title="MecaCandy" data-group="3d"><img src="assets/img/mecacandy-800.webp" width="800" height="450" alt="Robot gigante de cabeza esférica roja con ojos cian, en una sala oscura" loading="lazy"></button><figcaption>MecaCandy <span>render</span></figcaption></figure>
+    <figure><button class="frame" type="button" data-img="assets/img/hover-1920.webp" data-title="Hover" data-group="3d"><img src="assets/img/hover-800.webp" width="800" height="800" alt="Pequeño robot blanco sentado en una silla sobre fondo azul" loading="lazy"></button><figcaption>Hover <span>render</span></figcaption></figure>
+    <figure><button class="frame" type="button" data-img="assets/img/charity-1920.webp" data-title="Charity" data-group="3d"><img src="assets/img/charity-800.webp" width="800" height="450" alt="Personaje con gafas recostado tras un escritorio, con fuego al fondo" loading="lazy"></button><figcaption>Charity <span>render</span></figcaption></figure>
+    <figure><button class="frame" type="button" data-img="assets/img/timu-1920.webp" data-title="Timu" data-group="3d"><img src="assets/img/timu-800.webp" width="800" height="450" alt="Personaje pelirrojo con ojos de distinto color sobre fondo granate" loading="lazy"></button><figcaption>Timu <span>render</span></figcaption></figure>
+    <figure><button class="frame" type="button" data-img="assets/img/sugar-1920.webp" data-title="Sugar" data-group="3d"><img src="assets/img/sugar-800.webp" width="800" height="450" alt="Silueta negra con ojos blancos sobre fondo rojo" loading="lazy"></button><figcaption>Sugar <span>lineart</span></figcaption></figure>
+  </div>
+</section>
+
+<section class="section wrap" aria-labelledby="h-creditos">
+  <div class="section-head">
+    <h2 id="h-creditos"><span lang="es">Créditos</span><span lang="en">Credits</span></h2>
+    <p><span lang="es">Mi papel en cada proyecto.</span><span lang="en">My role on each project.</span></p>
+  </div>
+  <div class="credits">
+    <div class="credit"><div class="r"><span lang="es">Script supervisor, montador principal</span><span lang="en">Script supervisor, lead editor</span></div><div class="t">Al otro lado de la nube negra<small lang="es">Mediometraje · trabajo de fin de grado</small><small lang="en">Medium-length film · final degree project</small></div></div>
+    <div class="credit"><div class="r"><span lang="es">Dirección creativa, VFX, montador principal</span><span lang="en">Creative direction, VFX, lead editor</span></div><div class="t">El molí de vent<small lang="es">Cortometraje · 2º premio Festival XS de Puçol 2026</small><small lang="en">Short film · 2nd prize Festival XS de Puçol 2026</small></div></div>
+    <div class="credit"><div class="r">Script supervisor</div><div class="t">Réquiem<small lang="es">Cortometraje</small><small lang="en">Short film</small></div></div>
+    <div class="credit"><div class="r"><span lang="es">Dirección creativa, animación 3D</span><span lang="en">Creative direction, 3D animation</span></div><div class="t">Starman<small lang="es">Videoclip fan · David Bowie</small><small lang="en">Fan music video · David Bowie</small></div></div>
+    <div class="credit"><div class="r"><span lang="es">Cámara, desarrollo creativo, VFX, música</span><span lang="en">Camera, creative development, VFX, music</span></div><div class="t">This Was a Film About You / About Absence<small lang="es">Cortometrajes experimentales</small><small lang="en">Experimental short films</small></div></div>
+    <div class="credit"><div class="r"><span lang="es">Animación</span><span lang="en">Animation</span></div><div class="t">Ancient Dreams in a Modern Land<small lang="es">Videoclip animado</small><small lang="en">Animated music video</small></div></div>
+    <div class="credit"><div class="r"><span lang="es">Montaje</span><span lang="en">Editing</span></div><div class="t">Close to Heaven<small>AMV · Elden Ring</small></div></div>
+  </div>
+</section>
+
+<section class="section wrap" id="sobre-mi" aria-labelledby="h-sobre">
+  <div class="section-head">
+    <h2 id="h-sobre"><span lang="es">Sobre mí</span><span lang="en">About</span></h2>
+  </div>
+  <div class="about">
+    <div class="frame portrait"><img src="assets/img/daniel-800.webp" srcset="assets/img/daniel-400.webp 400w, assets/img/daniel-800.webp 800w" sizes="(max-width:760px) 300px, 33vw" width="800" height="800" alt="Retrato de Daniel Cabezos Roig" loading="lazy"></div>
+    <div>
+      <p class="intro"><span lang="es">Soy graduado en Comunicación Audiovisual por la Universitat Jaume I, con formación práctica en todas las fases de la producción. He trabajado en ficción, cine experimental y videoclips, sobre todo en montaje, cámara y animación 3D, y he hecho prácticas técnicas en la UPV. Me considero creativo, resolutivo y comprometido, con una visión global del proceso audiovisual y muchas ganas de seguir aprendiendo.</span><span lang="en">I hold a degree in Audiovisual Communication from Universitat Jaume I, with hands-on training across every stage of production. I have worked on fiction, experimental film and music videos, mostly in editing, camera and 3D animation, and completed a technical internship at the UPV. I am creative, resourceful and committed, with an overall view of the production process and a strong drive to keep learning.</span></p>
+      <div class="facts">
+        <div>
+          <h3><span lang="es">Experiencia</span><span lang="en">Experience</span></h3>
+          <p style="margin:0 0 8px;line-height:1.4"><strong><span lang="es">Técnico audiovisual (prácticas)</span><span lang="en">Audiovisual technician (internship)</span></strong><span class="meta" style="display:block">Universitat Politècnica de València (UPV)</span></p>
+          <ul class="bul">
+            <li><span lang="es">Producción, grabación y manejo de equipos de imagen y sonido</span><span lang="en">Production, recording and operating image and sound equipment</span></li>
+            <li><span lang="es">Edición de vídeo y organización de material técnico</span><span lang="en">Video editing and organising technical material</span></li>
+            <li><span lang="es">Colaboración en producciones y eventos del centro</span><span lang="en">Supporting the centre's productions and events</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3><span lang="es">Formación</span><span lang="en">Education</span></h3>
+          <ul>
+            <li><span lang="es">Grado en Comunicación Audiovisual</span><span lang="en">BA in Audiovisual Communication</span><span class="meta">Universitat Jaume I (UJI)</span></li>
+            <li style="margin-top:8px"><span lang="es">Curso especializado: diseño y modelado 3D para animación</span><span lang="en">Specialised course: 3D design and modelling for animation</span><span class="meta">RTVE</span></li>
+          </ul>
+          <h3 style="margin-top:24px"><span lang="es">Idiomas</span><span lang="en">Languages</span></h3>
+          <ul>
+            <li><span lang="es">Español, nativo</span><span lang="en">Spanish, native</span></li>
+            <li><span lang="es">Valenciano, B2</span><span lang="en">Valencian, B2</span></li>
+            <li><span lang="es">Inglés, C1</span><span lang="en">English, C1</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3><span lang="es">Programas</span><span lang="en">Software</span></h3>
+          <ul>
+            <li>Adobe Premiere Pro</li><li>DaVinci Resolve</li><li>Blender</li><li>Audacity</li><li>LMMS</li><li>GIMP</li><li>vMix</li><li>Datavideo TVS-2000A</li>
+          </ul>
+        </div>
+        <div>
+          <h3><span lang="es">Habilidades</span><span lang="en">Skills</span></h3>
+          <ul>
+            <li><span lang="es">Montaje y edición</span><span lang="en">Editing</span></li>
+            <li><span lang="es">Producción audiovisual</span><span lang="en">Audiovisual production</span></li>
+            <li><span lang="es">Cámara y dirección de fotografía</span><span lang="en">Camera and cinematography</span></li>
+            <li><span lang="es">Animación y modelado 3D</span><span lang="en">3D animation and modelling</span></li>
+            <li><span lang="es">Efectos visuales</span><span lang="en">Visual effects</span></li>
+            <li><span lang="es">Script y continuidad</span><span lang="en">Script supervision and continuity</span></li>
+            <li>Storytelling</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap contact" id="contacto" aria-labelledby="h-contacto">
+  <h2 id="h-contacto"><span lang="es">Contacto</span><span lang="en">Contact</span></h2>
+  <p style="margin-top:14px;color:var(--graphite)"><span lang="es">Escríbeme para proyectos, prácticas o empleo.</span><span lang="en">Write to me about projects, internships or jobs.</span></p>
+  <a class="mail" id="mail" href="mailto:dcabezos@gmail.com">dcabezos@gmail.com</a>
+  <div class="ctas">
+    <button class="btn solid" type="button" id="copy"><span lang="es">Copiar email</span><span lang="en">Copy email</span></button>
+    <a class="btn" href="assets/cv/CV-Daniel-Cabezos-Roig.pdf" download><svg viewBox="0 0 11 12" aria-hidden="true"><path d="M4.5 0h2v6.2l2.1-2.1 1.4 1.4L5.5 10 1 5.5l1.4-1.4 2.1 2.1zM0 10.5h11V12H0z"/></svg><span lang="es">Descargar CV (PDF)</span><span lang="en">Download CV (PDF, Spanish)</span></a>
+    <p class="status" id="copyStatus" role="status"></p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Daniel Cabezos Roig</span>
+    <span><span lang="es">Valencia, España</span><span lang="en">Valencia, Spain</span></span>
+    <a href="#inicio"><span lang="es">Volver arriba</span><span lang="en">Back to top</span></a>
+  </div>
+</footer>
+
+<dialog class="viewer" id="viewer" aria-labelledby="vTitle">
+  <div class="v-in">
+    <div class="v-stage" id="vStage"></div>
+    <div class="v-bar">
+      <p class="v-title" id="vTitle"></p>
+      <button class="btn" type="button" id="vPrev" hidden><span lang="es">Anterior</span><span lang="en">Previous</span></button>
+      <button class="btn" type="button" id="vNext" hidden><span lang="es">Siguiente</span><span lang="en">Next</span></button>
+      <a class="btn" id="vExt" href="#" target="_blank" rel="noopener" hidden><span lang="es">Abrir en <span id="vExtName">YouTube</span></span><span lang="en">Open on <span id="vExtName2">YouTube</span></span></a>
+      <button class="btn" type="button" id="vClose"><span lang="es">Cerrar</span><span lang="en">Close</span></button>
+    </div>
+  </div>
+</dialog>
+
+<script>
+{
+  const root = document.documentElement;
+  const $ = (s, el = document) => el.querySelector(s);
+  const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const t = (es, en) => root.dataset.lang === 'en' ? en : es;
+
+  /* idioma */
+  const langBtn = $('#lang');
+  const labelLang = () => langBtn.setAttribute('aria-label', t('Ver la web en inglés', 'View the site in Spanish'));
+  labelLang();
+  langBtn.addEventListener('click', () => {
+    const next = root.dataset.lang === 'en' ? 'es' : 'en';
+    root.dataset.lang = next; root.lang = next; labelLang();
+    try { localStorage.setItem('lang', next); } catch (e) {}
+    fitName();
+  });
+
+  /* nombre: se ajusta al ancho y se "desanamorfiza" una vez */
+  const name = $('.name');
+  function fitName() {
+    name.classList.add('m');
+    name.style.fontSize = '100px';
+    const widest = Math.max(...$$(':scope > span', name).map(s => s.getBoundingClientRect().width));
+    const box = name.getBoundingClientRect().width;
+    if (widest > 0) name.style.fontSize = Math.floor(100 * box / widest * 0.995) + 'px';
+    name.classList.remove('m');
+    const mail = $('#mail');
+    mail.style.fontSize = '100px';
+    const mw = mail.getBoundingClientRect().width, mb = mail.parentElement.getBoundingClientRect().width;
+    if (mw > 0) mail.style.fontSize = Math.min(92, Math.floor(100 * mb / mw * 0.98)) + 'px';
+  }
+  let opened = false;
+  function openName() {
+    if (opened) return; opened = true;
+    fitName();
+    void name.offsetWidth;
+    requestAnimationFrame(() => name.classList.add('open'));
+  }
+  (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(openName);
+  setTimeout(openName, 1800);
+  let rz; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(fitName, 120); });
+
+  /* vídeo de portada */
+  const reel = $('#reel'), reelBtn = $('#reelBtn');
+  function setReel(play) {
+    if (play) { const p = reel.play(); if (p) p.catch(() => {}); } else reel.pause();
+    reelBtn.setAttribute('aria-pressed', String(!play));
+    $('.on', reelBtn).hidden = !play; $('.off', reelBtn).hidden = play;
+  }
+  if (reduce) { reel.removeAttribute('autoplay'); setReel(false); }
+  reelBtn.addEventListener('click', () => setReel(reel.paused));
+
+  /* miniaturas de YouTube: maxres y, si no existe, hq */
+  for (const img of $$('img[data-thumb]')) {
+    const id = img.dataset.thumb;
+    img.addEventListener('load', () => {
+      if (img.naturalWidth <= 120 && !img.dataset.fb) { img.dataset.fb = 1; img.src = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`; }
+    });
+    img.addEventListener('error', () => {
+      if (!img.dataset.fb) { img.dataset.fb = 1; img.src = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`; }
+      else img.remove();
+    });
+    img.src = `https://i.ytimg.com/vi/${id}/maxresdefault.jpg`;
+  }
+
+  /* miniatura de Google Drive (solo si el archivo es público) */
+  for (const img of $$('img[data-drive-thumb]')) {
+    img.addEventListener('error', () => img.remove());
+    img.src = `https://drive.google.com/thumbnail?id=${img.dataset.driveThumb}&sz=w1280`;
+  }
+
+  /* en pantallas táctiles el color llega al pasar por el centro */
+  if (matchMedia('(hover: none)').matches && 'IntersectionObserver' in window) {
+    const litObs = new IntersectionObserver(es => es.forEach(e => e.target.classList.toggle('lit', e.isIntersecting)), { rootMargin: '-30% 0px -30% 0px' });
+    $$('.frame').forEach(f => litObs.observe(f));
+  }
+
+  /* visor: vídeos e imágenes */
+  const dlg = $('#viewer'), stage = $('#vStage'), vTitle = $('#vTitle');
+  const vPrev = $('#vPrev'), vNext = $('#vNext'), vExt = $('#vExt');
+  const gallery = $$('[data-group="3d"]');
+  let gi = -1, opener = null;
+  const extName = n => { $('#vExtName').textContent = n; $('#vExtName2').textContent = n; };
+  /* YouTube exige que la página envíe su dirección (Referer). Desde un archivo abierto en local
+     o desde una vista previa incrustada no la envía y sale el "error 153": ahí se abre fuera. */
+  let framed = true; try { framed = window.top !== window.self; } catch (e) {}
+  const canEmbed = /^https?:$/.test(location.protocol) && !framed;
+  function fallback(btn, url, name) {
+    const box = document.createElement('div'); box.className = 'v-fallback';
+    const thumb = $('img', btn);
+    if (thumb && thumb.currentSrc) { const im = new Image(); im.src = thumb.currentSrc; im.alt = ''; box.append(im); }
+    const p = document.createElement('p');
+    p.textContent = t(`Este vídeo no se puede reproducir dentro de esta vista. Ábrelo en ${name}.`, `This video can't play inside this view. Open it on ${name}.`);
+    const a = document.createElement('a'); a.className = 'btn'; a.href = url; a.target = '_blank'; a.rel = 'noopener';
+    a.textContent = t(`Ver en ${name}`, `Watch on ${name}`);
+    box.append(p, a); stage.append(box);
+  }
+  function frameFor(src, title, allow) {
+    const f = document.createElement('iframe');
+    f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+    f.setAttribute('allow', allow);
+    f.setAttribute('allowfullscreen', '');
+    f.title = title;
+    f.src = src;
+    return f;
+  }
+
+  function show(btn) {
+    stage.textContent = ''; gi = -1;
+    vTitle.textContent = btn.dataset.title || '';
+    vExt.hidden = true; vPrev.hidden = vNext.hidden = true;
+    if (btn.dataset.yt) {
+      const id = btn.dataset.yt, url = `https://www.youtube.com/watch?v=${id}`;
+      if (canEmbed) stage.append(frameFor(`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&playsinline=1`, btn.dataset.title || 'YouTube', 'autoplay; encrypted-media; picture-in-picture; fullscreen'));
+      else fallback(btn, url, 'YouTube');
+      vExt.href = url; extName('YouTube'); vExt.hidden = !canEmbed;
+    } else if (btn.dataset.drive) {
+      const id = btn.dataset.drive, url = `https://drive.google.com/file/d/${id}/view`;
+      if (canEmbed) stage.append(frameFor(`https://drive.google.com/file/d/${id}/preview`, btn.dataset.title || 'Google Drive', 'autoplay; fullscreen'));
+      else fallback(btn, url, 'Google Drive');
+      vExt.href = url; extName('Google Drive'); vExt.hidden = !canEmbed;
+    } else if (btn.dataset.src) {
+      const v = document.createElement('video');
+      v.src = btn.dataset.src; v.controls = true; v.playsInline = true; v.autoplay = true;
+      if (btn.dataset.poster) v.poster = btn.dataset.poster;
+      stage.append(v);
+    } else if (btn.dataset.img) {
+      const im = document.createElement('img');
+      im.src = btn.dataset.img; im.alt = $('img', btn)?.alt || '';
+      stage.append(im);
+      gi = gallery.indexOf(btn);
+      if (gi > -1) { vPrev.hidden = vNext.hidden = false; }
+    }
+  }
+  function open(btn) {
+    opener = btn; show(btn);
+    if (!dlg.open) dlg.showModal();
+    if (!reel.paused) { reel.pause(); reel.dataset.resume = 1; }
+  }
+  function step(d) {
+    if (gi < 0) return;
+    show(gallery[(gi + d + gallery.length) % gallery.length]);
+  }
+  $$('button.frame').forEach(b => b.addEventListener('click', () => open(b)));
+  vPrev.addEventListener('click', () => step(-1));
+  vNext.addEventListener('click', () => step(1));
+  $('#vClose').addEventListener('click', () => dlg.close());
+  dlg.addEventListener('close', () => {
+    stage.textContent = '';
+    if (reel.dataset.resume) { delete reel.dataset.resume; setReel(true); }
+    if (opener) opener.focus();
+  });
+  dlg.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') step(1);
+    if (e.key === 'ArrowLeft') step(-1);
+  });
+  dlg.addEventListener('click', e => { if (e.target === stage) dlg.close(); });
+
+  /* copiar email */
+  const status = $('#copyStatus');
+  $('#copy').addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText('dcabezos@gmail.com'); status.textContent = t('Email copiado.', 'Email copied.'); }
+    catch (e) { status.textContent = t('No se pudo copiar: dcabezos@gmail.com', 'Could not copy: dcabezos@gmail.com'); }
+  });
+}
+</script>
+</body>
+</html>
